@@ -65,9 +65,10 @@ public struct FileDescriptor: IntegerLiteralConvertible, NilLiteralConvertible {
     return ( nil, buf )
   }
   
-  public func write<T>(buffer: [ T ], var count: Int = -1)
+  public func write<T>(buffer: [ T ], count: Int = -1)
                 -> ( ErrorType?, Int )
   {
+    var count = count
     guard buffer.count > 0 else { return ( nil, 0 ) }
     
     if count < 0 { count = buffer.count }
